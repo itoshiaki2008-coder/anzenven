@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>安全設備義務化 ベン図・適用日一覧</title>
+<style>
+  body { font-family: sans-serif; background: linear-gradient(160deg, #0b1624 0%, #152538 100%); color: #c8d8e8; margin: 0; padding: 1.5rem; min-height: 100vh; }
+  h1 { font-size: 15px; font-weight: 500; color: #7ab3d4; margin-bottom: 1.2rem; letter-spacing: 0.03em; }
+  .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+  .tbl { border-collapse: collapse; width: 100%; font-size: 12px; }
+  .tbl th { font-size: 11px; font-weight: 500; padding: 6px 8px; border: 0.5px solid #1e4a7a; text-align: center; background: #0d2540; color: #a8cce8; }
+  .tbl td { padding: 6px 8px; border: 0.5px solid #1e3a52; vertical-align: middle; line-height: 1.5; text-align: center; }
+  .row-a td { background: #0e2d4a; color: #7ab8e8; }
+  .row-b td { background: #0e2a14; color: #7acc7a; }
+  .row-c td { background: #2e1e06; color: #d4943a; }
+  .row-x td { background: #1a2030; color: #6a7a8a; }
+  .row-a td:first-child, .row-b td:first-child, .row-c td:first-child, .row-x td:first-child { text-align: left; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 500; color: #fff; }
+  .ba { background: #1a6abf; } .bb { background: #2a6610; } .bc { background: #9a5c0c; } .bx { background: #4a5a6a; }
+  .fw { font-weight: 500; }
+  .note { font-size: 11px; color: #6a8a9a; margin-top: 10px; line-height: 1.7; }
+  @media(max-width: 560px) { .wrap { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<h1>安全設備等（知床関係）義務化 — ベン図・適用日一覧</h1>
+
+<div class="wrap">
+<div>
+<!--
+  ry=72, 重なり=48px, 中心間距離=72*2-48=96px
+  円1: cy=115
+  円2: cy=115+96=211
+  円3: cy=211+96=307
+  下端=307+72=379 → viewBox高さ=379+45=424
+-->
+<svg width="100%" viewBox="0 0 310 424" role="img">
+  <title>安全設備義務化ベン図</title>
+  <desc>海上運送法・遊漁船・その他の3楕円。垂直径の2/3重なり。12人以下/13人以上境界線。ABCと対象外に色分け。</desc>
+
+  <defs>
+    <clipPath id="vL"><rect x="0"   y="0" width="155" height="424"/></clipPath>
+    <clipPath id="vR"><rect x="155" y="0" width="155" height="424"/></clipPath>
+    <clipPath id="e1"><ellipse cx="155" cy="115" rx="108" ry="72"/></clipPath>
+    <clipPath id="e2"><ellipse cx="155" cy="211" rx="108" ry="72"/></clipPath>
+    <clipPath id="e3"><ellipse cx="155" cy="307" rx="108" ry="72"/></clipPath>
+  </defs>
+
+  <text x="77"  y="22" font-size="11" text-anchor="middle" fill="#6a8aaa">12人以下</text>
+  <text x="223" y="22" font-size="11" text-anchor="middle" fill="#6a8aaa">13人以上</text>
+
+  <!-- 円3（その他）ベース -->
+  <ellipse cx="155" cy="307" rx="108" ry="72" fill="#1a2a3a" clip-path="url(#vL)"/>
+  <ellipse cx="155" cy="307" rx="108" ry="72" fill="#0e2a42" clip-path="url(#vR)"/>
+
+  <!-- 円2（遊漁船）ベース -->
+  <ellipse cx="155" cy="211" rx="108" ry="72" fill="#2a1e08"/>
+
+  <!-- 円2∩円3右: A青 -->
+  <g clip-path="url(#vR)">
+    <ellipse cx="155" cy="211" rx="108" ry="72" fill="#0e2a42" clip-path="url(#e3)"/>
+  </g>
+
+  <!-- 円1（事業船）ベース -->
+  <ellipse cx="155" cy="115" rx="108" ry="72" fill="#0e2814" clip-path="url(#vL)"/>
+  <ellipse cx="155" cy="115" rx="108" ry="72" fill="#0e2a42" clip-path="url(#vR)"/>
+
+  <!-- 円1∩円2: B緑 -->
+  <ellipse cx="155" cy="115" rx="108" ry="72" fill="#0e2814" clip-path="url(#e2)"/>
+
+  <!-- 輪郭線 -->
+  <ellipse cx="155" cy="115" rx="108" ry="72" fill="none" stroke="#2a7acc" stroke-width="1.5"/>
+  <ellipse cx="155" cy="211" rx="108" ry="72" fill="none" stroke="#c07020" stroke-width="1.5"/>
+  <ellipse cx="155" cy="307" rx="108" ry="72" fill="none" stroke="#4a6a7a" stroke-width="1.5"/>
+
+  <!-- 境界線 -->
+  <line x1="155" y1="12" x2="155" y2="412" stroke="#3a5a7a" stroke-width="0.8" stroke-dasharray="4 3"/>
+
+  <!-- 円名ラベル（左外） -->
+  <text x="20" y="108" font-size="9" font-weight="500" text-anchor="middle" fill="#4a9acc">海上運送法</text>
+  <text x="20" y="120" font-size="9" font-weight="500" text-anchor="middle" fill="#4a9acc">事業船</text>
+  <text x="20" y="208" font-size="9" font-weight="500" text-anchor="middle" fill="#d4853a">遊漁船</text>
+  <text x="20" y="304" font-size="9" font-weight="500" text-anchor="middle" fill="#6a8a9a">その他</text>
+
+  <!-- 円1左: B 海上タクシー・通船等 -->
+  <text x="90" y="88"  font-size="13" font-weight="500" text-anchor="middle" fill="#7acc7a">B</text>
+  <text x="90" y="101" font-size="8"  text-anchor="middle" fill="#7acc7a">海上タクシー</text>
+  <text x="90" y="111" font-size="8"  text-anchor="middle" fill="#7acc7a">通船等</text>
+
+  <!-- 円1右: A 定期航路旅客船・遊覧船等 -->
+  <text x="220" y="88"  font-size="13" font-weight="500" text-anchor="middle" fill="#7ab8e8">A</text>
+  <text x="220" y="101" font-size="8"  text-anchor="middle" fill="#7ab8e8">定期航路旅客船</text>
+  <text x="220" y="111" font-size="8"  text-anchor="middle" fill="#7ab8e8">遊覧船等</text>
+
+  <!-- 円1∩円2: B 遊覧船兼遊漁船 -->
+  <text x="155" y="155" font-size="12" font-weight="500" text-anchor="middle" fill="#7acc7a">B</text>
+  <text x="155" y="166" font-size="8"  text-anchor="middle" fill="#7acc7a">遊覧船兼遊漁船</text>
+
+  <!-- 円2純左: C のみ -->
+  <text x="90" y="211" font-size="13" font-weight="500" text-anchor="middle" fill="#d4943a">C</text>
+
+  <!-- 円2純右: C のみ -->
+  <text x="220" y="211" font-size="13" font-weight="500" text-anchor="middle" fill="#d4943a">C</text>
+
+  <!-- 円2∩円3左: C 遊漁船、小型遊漁兼用船 -->
+  <text x="105" y="260" font-size="12" font-weight="500" text-anchor="middle" fill="#d4943a">C</text>
+  <text x="105" y="271" font-size="8"  text-anchor="middle" fill="#d4943a">遊漁船</text>
+  <text x="105" y="281" font-size="8"  text-anchor="middle" fill="#d4943a">小型遊漁兼用船</text>
+
+  <!-- 円2∩円3右: A 遊漁船兼その他旅客船 -->
+  <text x="208" y="260" font-size="12" font-weight="500" text-anchor="middle" fill="#7ab8e8">A</text>
+  <text x="208" y="271" font-size="8"  text-anchor="middle" fill="#7ab8e8">遊漁船兼</text>
+  <text x="208" y="281" font-size="8"  text-anchor="middle" fill="#7ab8e8">その他旅客船</text>
+
+  <!-- 円3純左: 対象外 プレジャーモーターボート、漁船、貨物船 -->
+  <text x="90" y="314" font-size="11" font-weight="500" text-anchor="middle" fill="#6a8a9a">対象外</text>
+  <text x="90" y="325" font-size="8"  text-anchor="middle" fill="#6a8a9a">プレジャーモーターボート</text>
+  <text x="90" y="335" font-size="8"  text-anchor="middle" fill="#6a8a9a">漁船・貨物船</text>
+
+  <!-- 円3純右: A その他旅客船 -->
+  <text x="220" y="311" font-size="13" font-weight="500" text-anchor="middle" fill="#7ab8e8">A</text>
+  <text x="220" y="324" font-size="8"  text-anchor="middle" fill="#7ab8e8">その他旅客船</text>
+</svg>
+</div>
+
+<div>
+<table class="tbl">
+  <thead>
+    <tr>
+      <th style="width:30%;text-align:left;">区分</th>
+      <th>法定無線</th>
+      <th>AIS<br>非常用位置等</th>
+      <th>救命<br>いかだ</th>
+      <th>隔壁<br>水密化</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="row-a">
+      <td>
+        <span class="badge ba">A</span><br>
+        <span style="font-size:10px;">海運法13人以上<br>遊漁∩他13人以上<br>その他のみ13人以上</span>
+      </td>
+      <td><span class="fw">R6.4.1</span><br><span style="font-size:10px;">※2</span></td>
+      <td><span class="fw">R6.4.1</span><br><span style="font-size:10px;">※2</span></td>
+      <td><span class="fw">R7.4.1</span><br><span style="font-size:10px;">※2</span></td>
+      <td><span class="fw">R8.4.1</span><br><span style="font-size:10px;">※2</span></td>
+    </tr>
+    <tr class="row-b">
+      <td>
+        <span class="badge bb">B</span><br>
+        <span style="font-size:10px;">海運法12人以下<br>海運法∩遊漁船</span>
+      </td>
+      <td><span class="fw">R7.6.1</span><br><span style="font-size:10px;">※1</span></td>
+      <td><span class="fw">R7.4.1</span><br><span style="font-size:10px;">※2</span></td>
+      <td><span class="fw">R8.4.1</span><br><span style="font-size:10px;">※2</span></td>
+      <td><span class="fw">R9.4.1</span><br><span style="font-size:10px;">※2</span></td>
+    </tr>
+    <tr class="row-c">
+      <td>
+        <span class="badge bc">C</span><br>
+        <span style="font-size:10px;">遊漁船のみ（全域）<br>遊漁∩他12人以下</span>
+      </td>
+      <td><span class="fw">R8.10.1</span><br><span style="font-size:10px;">※1</span></td>
+      <td><span class="fw">R8.10.1</span><br><span style="font-size:10px;">※2</span></td>
+      <td><span class="fw">R8.10.1</span><br><span style="font-size:10px;">※2</span></td>
+      <td><span class="fw">R9.4.1</span><br><span style="font-size:10px;">※2</span></td>
+    </tr>
+    <tr class="row-x">
+      <td>
+        <span class="badge bx">対象外</span><br>
+        <span style="font-size:10px;">その他のみ12人以下<br>（プレジャー等）</span>
+      </td>
+      <td colspan="4" style="text-align:center;font-weight:500;">義務なし</td>
+    </tr>
+  </tbody>
+</table>
+<div class="note">
+  ※1 現存船 → 記載日以降、最初の<b>中間検査または定期検査</b>までに搭載<br>
+  ※2 現存船 → 記載日以降、最初の<b>定期検査</b>までに搭載
+</div>
+</div>
+</div>
+
+</body>
+</html>
